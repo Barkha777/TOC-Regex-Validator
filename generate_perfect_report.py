@@ -461,7 +461,7 @@ def create_exact_report():
     r_g.font.color.rgb = RGBColor(0, 0, 255)
 
     p_links.add_run("Live Website:\n").bold = True
-    r_w = p_links.add_run("http://localhost:8501/\n")
+    r_w = p_links.add_run("https://toc-regex-validator.vercel.app/\n")
     r_w.underline = True
     r_w.font.color.rgb = RGBColor(0, 0, 255)
 

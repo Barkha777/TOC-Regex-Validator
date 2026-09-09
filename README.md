@@ -1,9 +1,9 @@
 # 🔤 Regular Expression Validator & Automata Engine
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)](https://python.org)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live_Website-success?style=for-the-badge&logo=vercel)](https://toc-regex-validator.vercel.app/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.55-FF4B4B?style=for-the-badge&logo=streamlit)](http://localhost:8501)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.141-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-success?style=for-the-badge&logo=vercel)](https://toc-regex-validator.vercel.app/docs)
 
 An educational and production-grade **Theory of Computation (TOC)** engine, interactive web application, and REST API backend. Transforms arbitrary infix regular expressions into $\epsilon$-NFAs using **Thompson's Construction Algorithm**, converts $\epsilon$-NFAs into DFAs using **Subset Construction**, and simulates deterministic string validation step-by-step.
 
@@ -24,12 +24,12 @@ An educational and production-grade **Theory of Computation (TOC)** engine, inte
 
 ---
 
-## 🌐 Project Links & URLs
+## 🌐 Project Links & Live URLs
 
-- 💻 **Live Web Application URL**: [http://localhost:8501/](http://localhost:8501/)
+- ⚡ **Live Production Website**: [https://toc-regex-validator.vercel.app/](https://toc-regex-validator.vercel.app/)
 - 🐙 **GitHub Repository**: [https://github.com/Barkha777/TOC-Regex-Validator](https://github.com/Barkha777/TOC-Regex-Validator)
-- ⚡ **Live Vercel Production API**: [https://toc-regex-validator.vercel.app](https://toc-regex-validator.vercel.app)
 - 📚 **Interactive Swagger API Docs**: [https://toc-regex-validator.vercel.app/docs](https://toc-regex-validator.vercel.app/docs)
+- 💻 **Local Streamlit Dashboard**: [http://localhost:8501/](http://localhost:8501/)
 
 ---
 
@@ -52,8 +52,8 @@ An educational and production-grade **Theory of Computation (TOC)** engine, inte
 
 ```
 c:\Users\Barkha\Downloads\TOC\
-├── app.py              # Streamlit Web Dashboard & Graphviz Automata Visualizer (http://localhost:8501/)
-├── api.py              # FastAPI REST API Backend Server
+├── app.py              # Streamlit Web Dashboard & Graphviz Automata Visualizer
+├── api.py              # FastAPI REST API Backend Server (https://toc-regex-validator.vercel.app/)
 ├── regex_parser.py     # Explicit Concat Insertion & Shunting-Yard Parser
 ├── nfa.py              # State Models & Thompson's Construction Algorithm
 ├── dfa.py              # DFA Models & Subset Construction Algorithm
@@ -86,4 +86,3 @@ c:\Users\Barkha\Downloads\TOC\
    ```bash
    streamlit run app.py
    ```
-   Access in browser: **[http://localhost:8501/](http://localhost:8501/)**
