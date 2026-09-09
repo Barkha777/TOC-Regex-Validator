@@ -1,9 +1,9 @@
 # 🔤 Regular Expression Validator & Automata Engine
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-success?style=for-the-badge&logo=vercel)](https://toc-regex-validator.vercel.app/docs)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.55-FF4B4B?style=for-the-badge&logo=streamlit)](http://localhost:8501)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.141-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.55-FF4B4B?style=for-the-badge&logo=streamlit)](https://streamlit.io)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-success?style=for-the-badge&logo=vercel)](https://toc-regex-validator.vercel.app/docs)
 
 An educational and production-grade **Theory of Computation (TOC)** engine, interactive web application, and REST API backend. Transforms arbitrary infix regular expressions into $\epsilon$-NFAs using **Thompson's Construction Algorithm**, converts $\epsilon$-NFAs into DFAs using **Subset Construction**, and simulates deterministic string validation step-by-step.
 
@@ -13,7 +13,8 @@ An educational and production-grade **Theory of Computation (TOC)** engine, inte
 
 - **Institution**: S. B. Jain Institute of Technology, Management & Research, Nagpur
 - **Department**: Department of Computer Science and Engineering (Data Science)
-- **Course**: Theory of Computation (Session: 2025-2026 EVEN)
+- **Course**: Theory of Computation / Information Retrieval (N-PECCD601T)
+- **Session**: 2025-2026 (EVEN SEMESTER)
 - **Guide**: **Dr. Dipak Wajgi**, Associate Professor
 - **Group 3 Students**:
   1. **Paras Pardhi** (CD24027)
@@ -23,12 +24,12 @@ An educational and production-grade **Theory of Computation (TOC)** engine, inte
 
 ---
 
-## 🌐 Live Deployed URLs
+## 🌐 Project Links & URLs
 
-- ⚡ **Live Production API**: [https://toc-regex-validator.vercel.app](https://toc-regex-validator.vercel.app)
+- 💻 **Live Web Application URL**: [http://localhost:8501/](http://localhost:8501/)
+- 🐙 **GitHub Repository**: [https://github.com/Barkha777/TOC-Regex-Validator](https://github.com/Barkha777/TOC-Regex-Validator)
+- ⚡ **Live Vercel Production API**: [https://toc-regex-validator.vercel.app](https://toc-regex-validator.vercel.app)
 - 📚 **Interactive Swagger API Docs**: [https://toc-regex-validator.vercel.app/docs](https://toc-regex-validator.vercel.app/docs)
-- 💓 **Health Check Endpoint**: [https://toc-regex-validator.vercel.app/health](https://toc-regex-validator.vercel.app/health)
-- 💻 **Local Streamlit Dashboard**: `http://localhost:8501`
 
 ---
 
@@ -51,13 +52,15 @@ An educational and production-grade **Theory of Computation (TOC)** engine, inte
 
 ```
 c:\Users\Barkha\Downloads\TOC\
-├── app.py              # Streamlit Web Dashboard & Graphviz Automata Visualizer
-├── api.py              # FastAPI REST API Backend Server (Vercel Serverless Function)
+├── app.py              # Streamlit Web Dashboard & Graphviz Automata Visualizer (http://localhost:8501/)
+├── api.py              # FastAPI REST API Backend Server
 ├── regex_parser.py     # Explicit Concat Insertion & Shunting-Yard Parser
 ├── nfa.py              # State Models & Thompson's Construction Algorithm
 ├── dfa.py              # DFA Models & Subset Construction Algorithm
 ├── simulator.py        # DFA String Execution Engine & Trajectory Logger
 ├── main.py             # CLI Driver & Automated Unit Test Suite
+├── generate_perfect_report.py # Academic Word Document Report Generator
+├── Group3_PBL_TAE1_Report_Regular_Expression_Validator.docx # Official TAE-1 Word Report
 ├── requirements.txt    # Production Dependencies
 ├── vercel.json         # Vercel Serverless Function Configuration
 ├── README.md           # Project & Deployment Documentation
@@ -66,62 +69,9 @@ c:\Users\Barkha\Downloads\TOC\
 
 ---
 
-## 📡 REST API Endpoint Reference
+## 🛠️ Local Setup & Execution
 
-### `POST /api/compile`
-
-**Request Body**:
-```json
-{
-  "regex": "(a|b)*abb",
-  "test_string": "ababb"
-}
-```
-
-**Response Payload**:
-```json
-{
-  "status": "success",
-  "regex": "(a|b)*abb",
-  "explicit_concat": "(a|b)*.a.b.b",
-  "postfix": "ab|*a.b.b.",
-  "is_match": true,
-  "test_string": "ababb",
-  "trace": [
-    "Initial State: D0 (Accept: False)",
-    "Step 1: Symbol 'a' -> Transition D0 -> D1",
-    "Step 2: Symbol 'b' -> Transition D1 -> D3",
-    "Step 3: Symbol 'a' -> Transition D3 -> D1",
-    "Step 4: Symbol 'b' -> Transition D1 -> D3",
-    "Step 5: Symbol 'b' -> Transition D3 -> D4",
-    "Final State: D4 -> Result: ACCEPTED"
-  ],
-  "nfa": {
-    "states": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13"],
-    "start_state": "q0",
-    "accept_state": "q13",
-    "alphabet": ["a", "b"]
-  },
-  "dfa": {
-    "states": ["D0", "D1", "D2", "D3", "D4"],
-    "start_state": "D0",
-    "accept_states": ["D4"],
-    "subsets": {
-      "D0": ["q0", "q2", "q4", "q6", "q7", "q8"],
-      "D1": ["q0", "q1", "q10", "q2", "q4", "q5", "q7", "q8", "q9"],
-      "D2": ["q0", "q2", "q3", "q4", "q5", "q7", "q8"],
-      "D3": ["q0", "q11", "q12", "q2", "q3", "q4", "q5", "q7", "q8"],
-      "D4": ["q0", "q13", "q2", "q3", "q4", "q5", "q7", "q8"]
-    }
-  }
-}
-```
-
----
-
-## 🛠️ Local Installation & Execution
-
-1. **Clone the Repository**:
+1. **Clone Repository**:
    ```bash
    git clone https://github.com/Barkha777/TOC-Regex-Validator.git
    cd TOC-Regex-Validator
@@ -132,23 +82,8 @@ c:\Users\Barkha\Downloads\TOC\
    pip install -r requirements.txt
    ```
 
-3. **Run Streamlit Web App**:
+3. **Launch Web Application**:
    ```bash
    streamlit run app.py
    ```
-
-4. **Run FastAPI Backend Server**:
-   ```bash
-   python -m uvicorn api:app --reload --port 8000
-   ```
-
-5. **Run Automated Unit Test Suite**:
-   ```bash
-   python main.py
-   ```
-
----
-
-## 📄 License & Attribution
-
-Developed for **Project Based Learning (TAE-1)** in Theory of Computation at **S. B. Jain Institute of Technology, Management & Research, Nagpur**.
+   Access in browser: **[http://localhost:8501/](http://localhost:8501/)**
